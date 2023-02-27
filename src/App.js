@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Grid from "./components/Grid";
+import { useState } from 'react'
 
-function App() {
+const App = () => {
+  const players = ['X', 'O'];
+  const [player, setPlayer] = useState(players[0]);
+  const [gridArray, setGridArray] = useState([
+    [{ id: 1, clickable: true, value: '' },
+    { id: 2, clickable: true, value: '' },
+    { id: 3, clickable: true, value: '' }],
+    [{ id: 4, clickable: true, value: '' },
+    { id: 5, clickable: true, value: '' },
+    { id: 6, clickable: true, value: '' }],
+    [{ id: 7, clickable: true, value: '' },
+    { id: 8, clickable: true, value: '' },
+    { id: 9, clickable: true, value: '' }]
+  ])
+
+  const handleClick = (sq) => {
+    sq.clickable ? rebuildGrid(sq) : alert('Cannot mark the same location as your opponent')
+  }
+
+  const rebuildGrid = (receivedSquare) => {
+    player === 'X' ? setPlayer(players[1]) : setPlayer(players[0]);
+    const newGrid = gridArray.map(inner => inner.map(square => square.id === receivedSquare.id ? {...square, value: player, clickable: !square.clickable} : square) ) // change X to player icon
+    setGridArray(newGrid)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Tic Tac Toe game</h1>
+      <Grid gridArray={gridArray} onClick={handleClick} />
     </div>
   );
 }
