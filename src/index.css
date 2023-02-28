@@ -1,18 +1,48 @@
-.square {
-  width: 5px;
-  height: 5px;
-  margin: 30px;
-  padding: 12px;
-  border: 1px solid black;
+body {
+  background-color: #8cdff8;
 }
 
-.row {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.square {
+  vertical-align: top;
+  position: relative;
+  margin: 15px;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #a5b4c4;
+  border-radius: 10px;
+  background-color: #a5b4c4;
+}
+
+.vertical-center {
+  width: 75px;
+  height: 75px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .grid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   border: 1px solid gray;
-  background-color: lightgray;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #000000;
   display: inline-block;
+}
+
+.reset {
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -80%);
 }

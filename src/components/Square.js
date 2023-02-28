@@ -1,8 +1,10 @@
+import {FaRegCircle, FaTimes} from 'react-icons/fa'
+
 const Square = ({ square, onClick }) => {
     return (
-        <span className={'square'} onClick={() => onClick(square)} >
-            {square.value}
-        </span>
+        <div className={'square'} onClick={() => onClick(square)} >
+            {square.value === 'X' ? <FaTimes className='vertical-center'/> : square.value === 'O' ? <FaRegCircle className='vertical-center'/> : ''}
+        </div>
 
     )
 }
